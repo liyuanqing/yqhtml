@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.1.0.min.js"></script>
+    <script src="seearch.js"></script>
+</head>
+<body>
+<div class="right-search">
+    <input id="searchpeople" type="text" class="search-inputpeople" placeholder="输入搜索内容" >
+</div>
+</body>
+<script>
+    $("#searchpeople").searchpeople({
+        url			:	"",                  //传入URL地址
+        data		:		function(){   //返回 要传给后台的data
+            return	"like=" + $(this).val();
+        },
+        callback	:	function(data){  //ajax success 函数
+                var html = "<ul class='searchul'>";
+               html+="<li class='active'>搜索结果</li>"
+                html += "</ul>";
+                $("#searchpeople").after(html);
+                $(".searchul").show()
+        },
+        search		:		function (){  //点击搜索出的内容后要执行的函数
+
+        },
+        part		:		0     //设置从输入几个字符开始执行搜索
+    });
+</script>
+</html>
