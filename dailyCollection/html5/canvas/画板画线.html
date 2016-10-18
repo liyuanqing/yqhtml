@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            background-color: #000000;
+        }
+        #canvas1{
+            background-color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+<canvas width="400" height="400" id="canvas1"></canvas>
+<button onclick="fun1()">清空画布</button>
+</body>
+</html>
+        <script>
+                var v_canvas = document.getElementById("canvas1");//获取canvas元素
+                var context = v_canvas.getContext("2d");
+                function fun1(){
+                    context.fillStyle="white";
+                    context.fillRect(0,0,400,450);
+//                    context.clearRect(0,0,400,400);
+                }
+                var x, y, x1, y1
+                v_canvas.onmousedown = function (e) {
+                    x = e.offsetX;
+                    y = e.offsetY;
+                    context.beginPath()
+                    context.moveTo(x, y);
+                    this.onmousemove=function(e){
+                        x1 = e.offsetX;
+                        y1 = e.offsetY;
+                        context.lineTo(x1, y1);
+                        context.strokeStyle = "red";
+                        context.lineWidth = 10;
+                        context.stroke();
+                    }
+                    this.onmouseup=function(){
+                        this.onmousemove=null;
+                        context.closePath()
+                    }
+                }
+        </script>

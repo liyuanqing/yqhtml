@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /*
+        * html5 canvas
+        *
+        * 图形变形
+        * 1，contest.translant(x,y)平移
+        * x ,y:移动多少
+        * 2.contect.scale(x,y)缩放
+        * x:水平方向缩放倍数
+        * y:垂直方向缩放倍数
+        * 3.context.rotate(x)旋转
+        * x---旋转角度
+        *     正数：顺时针旋转
+        *     负数：逆时针旋转
+        * */
+
+
+window.onload=function() {
+    var v_canvas = document.getElementById("canvas1");//获取canvas元素
+    //2取得上下文context
+    //context中封装了
+    var context = v_canvas.getContext("2d");
+//    context.translate(100,150);
+//    context.fillStyle = "rgba(255,0,0,0.5)";
+//    context.beginPath();
+//    for(var i=0 ;i<70;i++) {
+//        context.translate(-30, 80);
+//        context.scale(0.95, 0.95);
+//        context.rotate(-Math.PI / 11);
+////        context.fillStyle="red";
+////        context.fill()
+//
+//
+//
+//
+//        var x;
+//        var y;
+//        var z = Math.PI/10*12;
+//        context.beginPath();
+//        for(var j=0;j<5;j++){
+//            x=50*Math.sin(j*z);
+//            y=50*Math.cos(j*z);
+//            context.lineTo(120+x,120+y);
+//        }
+//        context.closePath();
+//        context.strokeStyle = 'red';
+//        context.fillStyle="red";
+//        context.fill()
+//        context.stroke();
+
+
+
+//        var x;
+//        var y;
+//        var z = Math.PI / 15 * 11;
+//        context.beginPath();
+//        //            context.moveTo(0,0);
+//        for (var j = 0; j < 30; j++) {
+//            x = Math.sin(j * z);
+//            y = Math.cos(j * z);
+//            context.lineTo(150 + x * 100, 150 + y * 100);
+//        }
+//        context.closePath();
+//        context.strokeStyle = 'red';
+//        context.lineWidth = 1;
+//        context.stroke();
+
+//    }
+
+    //图形组和  context.globalCompositeOperation=type
+    /*
+    * type为：source-over:默认值，表示新图形复制在原有图形之上
+    *         destination-over:表示新图形复制在原有图形之下
+    *         source-in:新图形与原有图形进行in运算，只显示新图形与原有图形重叠部分
+    *         其他部分变透明
+    *         destination-in：原有图形与新图形进行in运算，只显示原有图形与新图形重叠部分
+    *         其他部分变透明
+    *         source-out:新图形与原有图形进行out运算，只显示新图形与原有图形不重叠部分
+    *         其他部分变透明
+    *         destination-out：原有图形与新图形进行out运算，只显示原有图形与新图形不重叠部分
+    *         其他部分变透明
+    *
+    *         source-atop:只绘制新图形中与原有图形重叠的部分与原有图形未被覆盖原有图形，其他的部分变透明
+    *         destination-atop:
+     * 只绘制原有图形中被新图形重叠覆盖的部分与新图形的其他部分，
+     * 原有图形中的其他部分变透明
+     * lighter:原有图形与新图形均绘制，重叠部分做加色处理
+     * xor:只绘制新图形中与原有图形不重叠的部分，重叠部分变透明
+     * copy:只绘制新图形，原有图形中未与新图形重叠的部分变透明
+
+     *
+    *
+    * */
+
+
+//    context.fillStyle="red";
+//    context.fillRect(50,50,200,200);
+//context.globalCompositeOperation="xor"
+//    context.arc(100,100,100,0,Math.PI*2,true)
+//    context.fillStyle="green";
+//    context.fill()
+
+
+
+
+    /*
+    * 阴影
+    * context.shadowOffsetX:阴影的横向偏移量；
+    * context.shadowOffsety：阴影的纵向偏移量
+    *        .shaadowColor:阴影颜色
+    *        。shadowBlur:阴影模糊度大于0
+    *
+    *
+    * */
+
+
+    context.fillStyle="red";
+    context.shadowOffsetX=50;
+    context.shadowOffsetY=50;
+    context.shadowColor="black";
+    context.shadowBlur=200
+    context.fillRect(50,50,200,200);
+}
+
+     </script>
+    <style>
+        #canvas1{
+            background-color:#ffd635;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="500" id="canvas1"></canvas>
+</body>
+</html>

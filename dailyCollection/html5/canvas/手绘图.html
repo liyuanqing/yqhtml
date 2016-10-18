@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            background-color: #f9fdff;
+        }
+        #canvas1{
+            background-color: #fdfbff;
+            color:transparent;
+        }
+
+    </style>
+</head>
+<body>
+<canvas width="1000" height="700" id="canvas1"></canvas>
+</body>
+</html>
+        <script>
+            var v_canvas=document.getElementById("canvas1")
+            var context=v_canvas.getContext("2d");
+//            window.onload=function(){
+                var g1=context.createLinearGradient(0,0,1000,0);
+                g1.addColorStop(1,"#ffbbdb")
+                g1.addColorStop(0,"#b1ffce");
+                context.fillStyle=g1
+                context.fillRect(0,0,1000,600);
+//            }
+            function yuan(q1,q2,q3,q4,q5,q6,q7,q8,q9){
+                context.beginPath();
+                context.arc(q1,q2,q3,q4,q5,q6);
+                context.closePath();
+                context.fillStyle=q7;
+                context.fill();//填充
+                context.strokeStyle=q8;
+                context.lineWidth=q9
+                context.stroke()//绘制边框
+            }
+            yuan(0,0,500,0,Math.PI*2,true,"rgba(255,255,255,0.3)","transparent",0)
+            yuan(1000,150,350,0,Math.PI*2,true,"rgba(255,255,255,0.3)","transparent",0)
+            yuan(500,700,650,0,Math.PI*2,true,"rgba(255,255,255,0.3)","transparent",0);
+
+
+            yuan(150,400,100,0,Math.PI*2,true,"rgba(113,255,52,0.2)","transparent",0)
+            yuan(300,440,50,0,Math.PI*2,true,"rgba(113,255,52,0.2)","transparent",0)
+            yuan(300,440,80,0,Math.PI*2,true,"rgba(255,255,255,0.3)","transparent",0)
+            yuan(0,450,40,0,Math.PI*2,true,"rgba(113,255,255,0.3)","transparent",0)
+
+
+            yuan(600,100,80,0,Math.PI*2,true,"rgba(255,255,255,0.4)","transparent",0)
+            yuan(550,150,70,0,Math.PI*2,true,"rgba(255,229,245,0.4)","transparent",0)
+            yuan(630,170,30,0,Math.PI*2,true,"rgba(255,210,239,0.3)","transparent",0)
+
+
+            yuan(550,420,80,0,Math.PI*2,true,"rgba(255,255,255,0.2)","transparent",0)
+            yuan(670,420,130,0,Math.PI*2,true,"rgba(255,191,243,0.2)","transparent",0)
+            yuan(850,420,160,0,Math.PI*2,true,"rgba(255,200,243,0.5)","transparent",0);
+
+
+
+    for (var i = 0; i < 10; i++) {
+
+            context.beginPath()
+            context.bezierCurveTo(0, 410 - i * 10, 100, 370 - i * 3, 125, 500 - i * 4);
+            context.bezierCurveTo(125, 500 - i * 4, 135 - i * 4, 595, 305, 450 - i * 4);
+            context.bezierCurveTo(305, 450 - i * 4, 410 + i * 2, 310 - i * 5, 610, 455 - i * 3);
+            context.bezierCurveTo(610, 455 - i * 3, 760 - i * 2, 580, 1000, 300 - i * 10);
+            context.strokeStyle = "white";
+            context.stroke()
+            context.closePath()
+
+    }
+        </script>

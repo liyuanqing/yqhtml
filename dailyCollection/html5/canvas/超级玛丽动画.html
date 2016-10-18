@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    /*
+     * canvas动画：实际就是一个不断擦除、重绘的过程。
+     * */
+    var cv = document.createElement("canvas");
+    cv.width = 600;
+    cv.height = 400;
+
+    document.body.appendChild(cv);
+    var context = cv.getContext('2d');
+    function bg(){
+        var img1 = new Image();
+        img1.src="images/bg.png";
+        img1.onload= function () {
+            context.drawImage(img1,0,0);
+        };
+    }
+    //帧：fps = 30
+    //1000/30
+    var fps = 10;
+    var s = 1000/fps;
+    var i = 0;
+    var j = 0;
+    var flag = true;
+    setInterval(function(){
+        context.clearRect(0,0,600,400);
+        bg();
+        if(flag==true){
+            var img = new Image();
+            img.src="images/player.png";
+            if(i%3==0){
+                img.onload= function () {
+                    context.drawImage(img,0,0,50,60,10+j,285,50,60);
+                }
+                if(j>20){
+                    var img1 = new Image();
+                    img1.src="images/enemy.png";
+                    img1.onload= function () {
+                        context.drawImage(img1,0,0,50,60,100,0+j,50,60);
+                    }
+                }
+            }
+            if(i%3==1){
+                img.onload= function () {
+                    context.drawImage(img,50,0,50,60,10+j,285,50,60);
+                }
+                if(j>20){
+                    var img1 = new Image();
+                    img1.src="images/enemy.png";
+                    img1.onload= function () {
+                        context.drawImage(img1,0,0,50,60,100,0+j,50,60);
+                    }
+                }
+            }
+            if(i%3==2){
+                img.onload= function () {
+                    context.drawImage(img,100,0,50,60,10+j,285,50,60);
+                }
+                if(j>20){
+                    var img1 = new Image();
+                    img1.src="images/enemy.png";
+                    img1.onload= function () {
+                        context.drawImage(img1,0,0,50,60,100,0+j,50,60);
+                    }
+                }
+            }
+            i++;
+            j+=5;
+            if(j==500){
+                flag=false
+            }
+        }
+       else if(flag==false){
+            var img = new Image();
+            img.src="images/player.png";
+            if(i%3==0){
+                img.onload= function () {
+                    context.drawImage(img,0,60,50,60,10+j,285,50,60);
+                }
+            }
+            if(i%3==1){
+                img.onload= function () {
+                    context.drawImage(img,50,60,50,60,10+j,285,50,60);
+                }
+            }
+            if(i%3==2){
+                img.onload= function () {
+                    context.drawImage(img,100,60,50,60,10+j,285,50,60);
+                }
+            }
+            i++;
+            j-=5;
+            if(j==0){
+                flag=true
+            }
+        }
+    },s);
+
+
+
+
+
+</script>

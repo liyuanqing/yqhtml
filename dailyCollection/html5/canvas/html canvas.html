@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            background-color: #000000;
+        }
+        #canvas1{
+            background-color: #feff4b;
+        }
+
+    </style>
+    <script>
+        /*
+        * canvas 画布很多绘图功能对象
+        * */
+        window.onload=function() {
+            var v_canvas = document.getElementById("canvas1");//获取canvas元素
+            //2取得上下文context
+            //context中封装了
+            var context = v_canvas.getContext("2d");
+
+            //3绘图
+            //设置填充样式
+//            context.fillStyle="red";
+            //绘制矩形fillRect(起始横坐标，起始纵坐标，宽度 ，高度)
+//            context.fillRect(20,20,100,150);
+
+            //设置填充边框的样式
+//            context.fillStyle="blue";
+//            context.fillRect(20,20,100,150);
+//            context.strokeStyle="red";
+            //设置线宽
+//            context.lineWidth=3;
+//            context.strokeRect(20,20,100,150);
+
+
+            //擦除指定矩形区域的图形
+//            context.clearRect(0,0,4000,400)
+
+
+            //(2)圆形
+            /*
+            * 开始创建路径
+            */
+            context.beginPath();
+            /*
+            * context.arc(圆心横坐标，圆心纵坐标，半径，开始角度，结束角度，是否为顺时针)
+            *是否为顺时针 true是 false逆时针
+            *
+            *
+            *
+            * */
+            //            context.arc(50,50,50,0,Math.PI*2,true);
+            //关闭路径
+            context.closePath();
+            //设置绘制样式
+//            context.fillStyle='red';
+//            context.fill();//填充
+//            context.strokeStyle="green";
+//            context.lineWidth=3
+//            context.stroke()//绘制边框
+
+//            for(var i=0;i<20;i++){
+//                    context.beginPath();
+//                    context.arc(30*i,30*i,6*i,0,Math.PI*2,true);
+//                    context.closePath();
+//                    context.fillStyle="rgba(255,0,0,"+(1-0.05*i)+")"
+//                    context.fill();
+//
+//            }
+//            var i=0;
+//            function fun1(){
+//                if(i<15){
+//                    context.beginPath();
+//                    context.arc(30*i,30*i,6*i,0,Math.PI*2,true);
+//                    context.closePath();
+//                    context.fillStyle="rgba(255,0,0,"+(1-0.05*i)+")"
+//                    context.fill();
+//                }
+//                i++
+//
+//            }
+//            setInterval(fun1,200)
+//
+
+            //3线  ---lineTo moveTo
+            /*
+            * moveTo(起点横坐标，起点纵坐标)
+            * lineTo(终点横坐标，终点纵坐标)--该方法在moveTo方法中之指定的起点参数与终点参数之间绘制一条直线
+            *
+            * */
+            //        context.moveTo(10,10);
+//        context.lineTo(100,100);
+//            context.strokeStyle="red";
+//            context.lineWidth=10;
+//            context.stroke();
+
+
+//            context.beginPath();
+//            var x=Math.sin(0)
+//            var  y=Math.cos(0)
+//            var z=Math.PI/15*10
+//
+//            for(var i=0;i<30;i++){
+//                x=Math.sin(i*z);
+//                y=Math.cos(i*z);
+//                context.lineTo(50+x,10+y)}
+//            }
+//        context.closePath();
+//        context.fillStyle="red";
+//        context.lineWidth=5
+//        context.stroke();
+
+
+        //曲线----beziercurveTo 贝济埃曲线
+            //beziercurveTo(第一个控制点横坐标，第一个控制点纵坐标，第二个控制点横坐标，第二个控制点纵坐标，终点横坐标，终点纵坐标)
+//context.beginPath()
+//        context.bezierCurveTo(120, 20, 340,120,120,220);
+//            context.strokeStyle="red";
+//            context.stroke()
+//context.closePath()
+//            context.beginPath()
+//            context.bezierCurveTo(120,220,0,120,120, 20);
+//            context.strokeStyle="red";
+//            context.stroke()
+//            context.closePath()
+
+//            var x=Math.sin(0)
+//            var y=Math.cos(0)
+//            var z=Math.PI/15*11;
+//            context.moveTo(150,150);
+//            for(var i=0;i<30;i++){
+//                x=2*Math.sin(i*z)
+//                 y=0.8*Math.cos(i*z)
+//                context.bezierCurveTo(150+x*100,150+y*100-100,150+x*100+100,150+y*100,150+x*100,150+y*100)
+//            }
+//            context.strokeStyle="red"
+//            context.stroke()
+
+
+
+            //渐变
+            /*
+            * 1.线性渐变
+            * context.createLinearGradient(渐变起始点横坐标，渐变起始点纵坐标，渐变结束点点横坐标，渐变结束点纵坐标)
+            *context.addColorStop(arg1,arg2)追加渐变颜色
+             * arg1:为所设定的颜色离开渐变起始点的偏移量，范围0-1；
+             * arg2:追加颜色
+              * */
+//
+//           var g1=context.createLinearGradient(0,0,0,200);
+//            g1.addColorStop(0,"red")
+//            g1.addColorStop(0.5,"blue")
+//            g1.addColorStop(1,"green");
+//            context.fillStyle=g1
+//            context.fillRect(0,0,200,200);
+
+
+
+
+
+
+//            var g1 = context.createLinearGradient(0,0,300,0);
+//            g1.addColorStop(0,"rgba(0,0,255,0.5)");
+//            g1.addColorStop(0.5,"rgba(255,0,0,0.5)");
+//            g1.addColorStop(1,"rgba(0,255,0,0.5)");
+//            for(var i = 0;i<10;i++){
+//                context.beginPath();
+//                context.arc(i*25,i*25,i*10,0,Math.PI*2,true);
+//                context.fillStyle = g1;
+//                context.closePath();
+//                context.fill();
+//            }
+
+
+
+//径向渐变
+            /*
+            *
+            * context.createRadialGradient( 渐变开始的圆心横坐标，渐变开始的圆心纵坐标 ，开始圆的半径
+             *                                渐变结束的圆心横坐标，渐变结束的圆心纵坐标 ，结束圆的半径  )
+            *原理：从第一个圆的圆心向外进行扩散渐变，一直扩散到第二个圆的外轮廓处
+             *
+              * */
+//context.save();//保存当前状态
+// context.save()//保存之前动画
+//            var g2=context.createRadialGradient(150,150,30,150,150,200);
+//            g2.addColorStop(0,"rgba(0,0,255,0.5)");
+//            g2.addColorStop(0.5,"rgba(255,0,0,0.5)");
+//            g2.addColorStop(1,"rgba(0,255,0,0.5)");
+//            context.fillStyle=g2;
+//            context.fillRect(0,0,300,300)
+//            context.clearRect()//删除画面
+
+
+            //绘制文字
+            /*
+            * fillText（要绘制的文字，文字的起始坐标，文字的终止坐标，【显示文字时的最大宽度】）
+            * strokeText(参数同上)
+            * font:设置字体
+            * textAlign:水平对齐方式
+            * textBaseline:垂直对齐方式
+            *
+            * */
+
+//            context.fillStyle="red";
+//            context.font="bolder 40px 黑体";
+//            context.textAlign="center"
+////            context.textBaseline="top"
+////            context.fillText("才华吃苹果",100,100)
+//            context.strokeStyle="blue"
+//            context.strokeText("才华吃苹果",100,100)
+
+
+            //图像裁切
+            //先画裁剪区域，在填充图形或图像
+//            context.arc(100,100,200,0,Math.PI*2,true);
+//            context.clip()
+//            var img = new Image();
+//                    img.src="images/bg.png";
+//                    img.onload= function () {
+//                        context.drawImage(img,0,0);
+//                    }
+
+
+
+
+            //save与restore
+            //保存canvas的一些设置与状态
+          context.fillStyle="red";
+            context.fillRect(10,10,100,100);
+            context.save();
+            context.fillStyle="blue";
+            context.fillRect(120,10,100,100)
+            context.save();
+
+
+            context.fillStyle="green";
+            context.restore();
+            context.fillRect(230,10,100,100)
+        }
+
+        //save与restore
+
+    </script>
+</head>
+<body>
+<canvas width="400" height="400" id="canvas1"></canvas>
+</body>
+</html>

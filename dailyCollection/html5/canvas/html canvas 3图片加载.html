@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            background-color: #000000;
+        }
+        #canvas1{
+            background-color: #fcfffa;
+            color: #ffffff;
+        }
+</style>
+</head>
+<body>
+<canvas width="500" height="500" id="canvas1"></canvas>
+</body>
+</html>:
+        <script>
+            /*
+            * 绘制图像
+            * drawimage(image,x,y)
+            *                   image:image对象
+            *                   x,y：图像在画布中的起始坐标
+            *  drawimage(image,x,y，w,h)
+            *               w,h:设置图像的宽度与高度
+            *
+            *  drawImage(img,a,b,c,d,e,f,n,h)
+            *  将画布中已经绘制好的图像全部或部分区域复制到另一位置
+            *  a,b:截取图像起始点的横纵坐标
+            *  c,d:从（a,b）开始截取图片的大小
+            *  e,f:复制后的目标图像在画布中的起始横纵坐标
+            *  n,h:复制后目标图像的宽度和高度
+            *
+            * */
+
+            var v_canvas = document.getElementById("canvas1");//获取canvas元素             window.onload=function() {
+                var context = v_canvas.getContext("2d");
+                var img=new Image();
+                img.src="images/w6.jpg";
+                //img。onload事件：同步执行绘制图像的函数，可以实现一边加载，一边绘制
+                img.onload=function(){
+                    context.drawImage(img,10,10)
+                    context.drawImage(img,0,10,200,200,0,0,100,100)
+                }
+//            v_canvas.onmouseover=function(e){
+//                var x= e.offsetX;
+//                var y= e.offsetY;
+//                if(x<200&&y<100){
+//                    var img=new Image();
+//                    img.src="images/w4.jpg";
+//                    img.onload=function(){context.drawImage(img,0,10,200,200,0,0,200,100)
+//                    }
+//
+//                    }
+//                }
+//
+//            v_canvas.onmouseout=function(e){
+//                var x= e.offsetX;
+//                var y= e.offsetY;
+//                if(x>200||y>100){
+//                    var img=new Image();
+//                    img.src="images/w6.jpg";
+//                    img.onload=function(){context.drawImage(img,0,10,200,200,0,0,200,100)
+//                    }
+//                }
+//            }
+
+
+//            v_canvas.onmouseover=function(e){
+//                v_canvas.onmousemove=function(e){
+//                    var x= e.offsetX;
+//                    var y= e.offsetY;
+//                    if(x<200&&y<100){
+//                        var img=new Image();
+//                        img.src="images/w4.jpg";
+//                        img.onload=function(){context.drawImage(img,0,10,300,100,0,0,100,100)
+//                        }
+//                    }else {
+//                        var img = new Image();
+//                        img.src = "images/w6.jpg";
+//                        img.onload = function () {
+//                            context.drawImage(img, 0, 10, 200, 200, 0, 0, 100, 100)
+//                        }
+//                    }
+//                }
+
+
+
+
+        </script>

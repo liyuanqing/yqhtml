@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" width="600" height="400">
+</canvas>
+<p>双缓存技术就是在内存区先画一个位图，画好后直接将这个图一个点一个点覆盖到屏幕上，这个过程非常快，所以不会出现闪屏</p>
+<script>
+    var canvas;
+    var canvasBuffer;
+    var context;
+    var contextBuffer;
+
+
+    var fps = 10;
+    var s = 1000/fps;
+    var i = 0;
+    var j = 0;
+    var flag = true;
+    window.onload = init;
+
+    function init() {
+        canvas = document.getElementById("canvas");
+        canvasBuffer = document.createElement("canvas");     //创建一个canvas(用于缓存)
+        canvasBuffer.width = canvas.width;     //设置宽高
+        canvasBuffer.height = canvas.height;
+        context = canvas.getContext("2d");   //返回一个用于在画布上绘图的环境
+        contextBuffer = canvasBuffer.getContext("2d");
+        context.clearRect(0, 0, canvas.width, canvas.height);  //清空画布
+        contextBuffer.clearRect(0, 0, canvasBuffer.width, canvasBuffer.height);
+
+        setInterval(animation,s);  //执行动画
+    }
+    function animation(){
+        context.clearRect(0, 0, canvas.width, canvas.height); //清空画布
+        contextBuffer.clearRect(0, 0, canvasBuffer.width, canvasBuffer.height); //清空画布
+        var img1 = new Image();
+        img1.src="images/bg.png";
+        contextBuffer.drawImage(img1,0,0);
+        if(flag==true){
+            var img = new Image();
+            img.src="images/player.png";
+            if(i%3==0){
+                    contextBuffer.drawImage(img,0,0,50,60,10+j,285,50,60);
+                if(j>20){
+                    var img1 = new Image();
+                    img1.src="images/enemy.png";
+                        contextBuffer.drawImage(img1,0,0,50,60,100,0+j,50,60);
+                }
+            }else if(i%3==1){
+                    contextBuffer.drawImage(img,50,0,50,60,10+j,285,50,60);
+                if(j>20){
+                    var img1 = new Image();
+                    img1.src="images/enemy.png";
+                        contextBuffer.drawImage(img1,0,0,50,60,100,0+j,50,60);
+                }
+            }else if(i%3==2){
+                    contextBuffer.drawImage(img,100,0,50,60,10+j,285,50,60);
+                if(j>20){
+                    var img1 = new Image();
+                    img1.src="images/enemy.png";
+                        contextBuffer.drawImage(img1,0,0,50,60,100,0+j,50,60);
+                }
+            }
+            i++;
+            j+=5;
+            if(j==500){
+                flag=false
+            }
+        }
+        else if(flag==false){
+            var img = new Image();
+            img.src="images/player.png";
+            if(i%3==0){
+                    contextBuffer.drawImage(img,0,60,50,60,10+j,285,50,60);
+            }else if(i%3==1){
+                    contextBuffer.drawImage(img,50,60,50,60,10+j,285,50,60);
+            }else if(i%3==2){
+                    contextBuffer.drawImage(img,100,60,50,60,10+j,285,50,60);
+            }
+            i++;
+            j-=5;
+            if(j==0){
+                flag=true
+            }
+        }
+
+
+        context.drawImage(canvasBuffer, 0, 0);
+    }
+</script>
+</body>
+</html>
